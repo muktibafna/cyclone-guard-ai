@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: cycloneguard-ai
+    runtime: docker
+    plan: starter
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /healthz
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: PORT
+        value: "10000"
+      - key: WORKERS
+        value: "1"
+      - key: LOG_LEVEL
+        value: info
+      - key: CORS_ORIGINS
+        value: "https://cycloneguard-ai.vercel.app,http://localhost:3000,http://localhost:5173,http://127.0.0.1:8000"
